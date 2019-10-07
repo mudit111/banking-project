@@ -11,7 +11,7 @@ public class DbConnection {
 		Connection connection = null;
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		connection = DriverManager
-				.getConnection("jdbc:sqlserver://localhost:1433;databaseName=jdbc;username=sa;password=sunlife_1234");
+				.getConnection("jdbc:sqlserver://localhost:1433;databaseName=trip;username=sa;password=sunlife_1234");
 		return connection;
 	}
 }

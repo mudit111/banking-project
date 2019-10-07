@@ -1,5 +1,6 @@
 package com.trip.entity;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Flight {
@@ -9,6 +10,7 @@ public class Flight {
 	private String flightSource;
 	private String flightDestination;
 	private LocalTime flightTime;
+	private LocalDate flightDate;
 	private int flightPrice;
 	private int flightSeats;
 
@@ -16,7 +18,8 @@ public class Flight {
 
 	}
 
-	public Flight(String flightId, String flightAirline, String flightSource, String flightDestination, LocalTime flightTime, int flightPrice, int flightSeats) {
+	public Flight(String flightId, String flightAirline, String flightSource, String flightDestination,
+			LocalTime flightTime, int flightPrice, int flightSeats, LocalDate flightDate) {
 		super();
 		this.flightId = flightId;
 		this.flightAirline = flightAirline;
@@ -25,6 +28,7 @@ public class Flight {
 		this.flightTime = flightTime;
 		this.flightPrice = flightPrice;
 		this.flightSeats = flightSeats;
+		this.flightDate = flightDate;
 	}
 
 	public String getFlightId() {
@@ -49,6 +53,14 @@ public class Flight {
 
 	public void setFlightSource(String flightSource) {
 		this.flightSource = flightSource;
+	}
+
+	public LocalDate getFlightDate() {
+		return flightDate;
+	}
+
+	public void setFlightDate(LocalDate flightDate) {
+		this.flightDate = flightDate;
 	}
 
 	public String getFlightDestination() {
@@ -81,5 +93,12 @@ public class Flight {
 
 	public void setFlightSeats(int flightSeats) {
 		this.flightSeats = flightSeats;
+	}
+
+	@Override
+	public String toString() {
+		return "Flight [flightId=" + flightId + ", flightAirline=" + flightAirline + ", flightSource=" + flightSource
+				+ ", flightDestination=" + flightDestination + ", flightTime=" + flightTime + ", flightDate="
+				+ flightDate + ", flightPrice=" + flightPrice + ", flightSeats=" + flightSeats + "]";
 	}
 }
