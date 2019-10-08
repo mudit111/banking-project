@@ -17,40 +17,33 @@ public class FlightBlImpl implements FlightBl {
 	}
 
 	@Override
-	public boolean addFlight(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addFlight(Flight flight) throws ClassNotFoundException, SQLException {
+		return flightDao.addRecord(flight);
 	}
 
 	@Override
 	public List<Flight> getFlights(String flightOrigin, String flightDestination, LocalDate flightDate)
 			throws ClassNotFoundException, SQLException {
-		List<Flight> flightsList = flightDao.getRecords(flightOrigin, flightDestination, flightDate);
-		return flightsList;
+		return flightDao.getRecords(flightOrigin, flightDestination, flightDate);
 	}
 
 	@Override
-	public boolean updateFlight(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateFlight(Flight flight) throws ClassNotFoundException, SQLException {
+		return flightDao.updateRecord(flight);
 	}
 
 	@Override
-	public boolean deleteFlight(Flight flight) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteFlight(Flight flight) throws ClassNotFoundException, SQLException {
+		return flightDao.deleteRecord(flight);
 	}
 
 	@Override
-	public List<Flight> getAllFlights() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Flight> getAllFlights() throws ClassNotFoundException, SQLException {
+		return flightDao.getRecords();
 	}
 
 	@Override
 	public boolean updateSeats(Flight flight) throws ClassNotFoundException, SQLException {
-		boolean seatStatus = flightDao.updateRecordForSeat(flight); 
-		return seatStatus;
+		return flightDao.updateRecordForSeat(flight);
 	}
-
 }

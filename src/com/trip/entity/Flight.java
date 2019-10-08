@@ -19,7 +19,7 @@ public class Flight {
 	}
 
 	public Flight(String flightId, String flightAirline, String flightSource, String flightDestination,
-			LocalTime flightTime, int flightPrice, int flightSeats, LocalDate flightDate) {
+			LocalTime flightTime, LocalDate flightDate, int flightPrice, int flightSeats) {
 		super();
 		this.flightId = flightId;
 		this.flightAirline = flightAirline;

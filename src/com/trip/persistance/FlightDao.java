@@ -8,15 +8,15 @@ import com.trip.entity.Flight;
 
 public interface FlightDao {
 
-	boolean addRecord(Flight flight);
+	boolean addRecord(Flight flight) throws ClassNotFoundException, SQLException;
 
 	List<Flight> getRecords(String flightOrigin, String flightDestination, LocalDate flightDate) throws SQLException, ClassNotFoundException;
 
-	boolean updateRecord(Flight flight);
+	boolean updateRecord(Flight flight) throws ClassNotFoundException, SQLException;
 
-	boolean deleteRecord(Flight flight);
+	boolean deleteRecord(Flight flight) throws ClassNotFoundException, SQLException;
 
-	List<Flight> getRecords();
+	List<Flight> getRecords() throws SQLException, ClassNotFoundException;
 	
 	boolean updateRecordForSeat(Flight flight) throws ClassNotFoundException, SQLException;
 }

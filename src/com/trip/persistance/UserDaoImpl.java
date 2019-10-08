@@ -16,16 +16,13 @@ public class UserDaoImpl implements UserDao {
 		PreparedStatement preparedStatement = null;
 		connection = DbConnection.getDatabaseConnection();
 		preparedStatement = connection.prepareStatement("insert into Users values(?,?,?,?,?)");
-
 		preparedStatement.setString(1, user.getUserId());
 		preparedStatement.setString(2, user.getUserName());
 		preparedStatement.setInt(3, user.getUserAge());
 		preparedStatement.setString(4, user.getUserType());
 		preparedStatement.setString(5, user.getUserPassword());
-
 		int status = preparedStatement.executeUpdate();
 		connection.close();
-
 		if (status > 0) {
 			return true;
 		}

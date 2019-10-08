@@ -8,15 +8,16 @@ import com.trip.entity.Flight;
 
 public interface FlightBl {
 
-	boolean addFlight(Flight flight);
+	boolean addFlight(Flight flight) throws ClassNotFoundException, SQLException;
 
-	List<Flight> getFlights(String flightOrigin, String flightDestination, LocalDate flightDate) throws ClassNotFoundException, SQLException;
+	List<Flight> getFlights(String flightOrigin, String flightDestination, LocalDate flightDate)
+			throws ClassNotFoundException, SQLException;
 
-	boolean updateFlight(Flight flight);
+	boolean updateFlight(Flight flight) throws ClassNotFoundException, SQLException;
 
-	boolean deleteFlight(Flight flight);
+	boolean deleteFlight(Flight flight) throws ClassNotFoundException, SQLException;
 
-	List<Flight> getAllFlights();
-	
+	List<Flight> getAllFlights() throws ClassNotFoundException, SQLException;
+
 	boolean updateSeats(Flight flight) throws ClassNotFoundException, SQLException;
 }

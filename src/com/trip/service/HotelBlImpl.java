@@ -17,34 +17,28 @@ public class HotelBlImpl implements HotelBl {
 	}
 
 	@Override
-	public boolean addHotel(Hotel hotel) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addHotel(Hotel hotel) throws ClassNotFoundException, SQLException {
+		return hotelDao.addRecord(hotel);
 	}
 
 	@Override
 	public List<Hotel> getHotels(String hotelLocation, LocalDate hotelDate)
 			throws ClassNotFoundException, SQLException {
-		List<Hotel> hotelList = hotelDao.getRecords(hotelLocation, hotelDate);
-		return hotelList;
+		return hotelDao.getRecords(hotelLocation, hotelDate);
 	}
 
 	@Override
-	public boolean deleteHotels(Hotel hotel) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteHotels(Hotel hotel) throws ClassNotFoundException, SQLException {
+		return hotelDao.deleteRecord(hotel);
 	}
 
 	@Override
-	public List<Hotel> getAllHotels() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Hotel> getAllHotels() throws ClassNotFoundException, SQLException {
+		return hotelDao.getRecords();
 	}
 
 	@Override
 	public boolean updateHotelRooms(Hotel hotel) throws ClassNotFoundException, SQLException {
-		boolean roomStatus = hotelDao.updateRecordForRoom(hotel);
-		return roomStatus;
+		return hotelDao.updateRecordForRoom(hotel);
 	}
-
 }

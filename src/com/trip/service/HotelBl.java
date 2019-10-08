@@ -7,13 +7,14 @@ import java.util.List;
 import com.trip.entity.Hotel;
 
 public interface HotelBl {
-	boolean addHotel(Hotel hotel);
+
+	boolean addHotel(Hotel hotel) throws ClassNotFoundException, SQLException;
 
 	List<Hotel> getHotels(String hotelLocation, LocalDate hotelDate) throws ClassNotFoundException, SQLException;
 
-	boolean deleteHotels(Hotel hotel);
+	boolean deleteHotels(Hotel hotel) throws ClassNotFoundException, SQLException;
 
-	List<Hotel> getAllHotels();
+	List<Hotel> getAllHotels() throws ClassNotFoundException, SQLException;
 
 	boolean updateHotelRooms(Hotel hotel) throws ClassNotFoundException, SQLException;
 }

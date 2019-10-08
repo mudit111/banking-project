@@ -8,13 +8,13 @@ import com.trip.entity.Hotel;
 
 public interface HotelDao {
 
-	boolean addRecord(Hotel hotel);
+	boolean addRecord(Hotel hotel) throws ClassNotFoundException, SQLException;
 
 	List<Hotel> getRecords(String hotelLocation, LocalDate hotelDate) throws ClassNotFoundException, SQLException;
 
-	boolean deleteRecord(Hotel hotel);
+	boolean deleteRecord(Hotel hotel) throws SQLException, ClassNotFoundException;
 
-	List<Hotel> getRecords();
+	List<Hotel> getRecords() throws ClassNotFoundException, SQLException;
 
 	boolean updateRecordForRoom(Hotel hotel) throws ClassNotFoundException, SQLException;
 }

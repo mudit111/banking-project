@@ -11,10 +11,10 @@ public class MyClient {
 		UserInterface userInterface = new UserInterfaceImpl();
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
-			userInterface.showMenu();
+			userInterface.showMainMenu();
 			System.out.println("Enter Choice : ");
 			int choice = scanner.nextInt();
-			userInterface.performOnMenu(choice);
+			userInterface.performOnMainMenu(choice);
 		}
 	}
 }

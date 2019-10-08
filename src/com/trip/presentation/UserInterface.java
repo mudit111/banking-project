@@ -2,7 +2,15 @@ package com.trip.presentation;
 
 public interface UserInterface {
 
-	public void showMenu();
+	public void showMainMenu();
 
-	public void performOnMenu(int choice);
+	public void performOnMainMenu(int choice);
+	
+	public void showAdminMenu();
+	
+	public void showUserMenu();
+
+	public void performOnAdminMenu(int choice);
+	
+	public void performOnUserMenu(int choice);
 }

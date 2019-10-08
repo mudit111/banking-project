@@ -16,18 +16,12 @@ public class UserBlImpl implements UserBl {
 
 	@Override
 	public boolean addUser(User user) throws ClassNotFoundException, SQLException {
-		user.setUserId(user.getUserId());
-		user.setUserName(user.getUserName());
-		user.setUserAge(user.getUserAge());
-		user.setUserType(user.getUserType());
-		user.setUserPassword(user.getUserPassword());
 		return userDao.addRecord(user);
 	}
 
 	@Override
 	public User getUser(String userId, String userPassword) throws ClassNotFoundException, SQLException {
-		User user = userDao.getRecord(userId, userPassword);
-		return user;
+		return userDao.getRecord(userId, userPassword);
 	}
 
 }

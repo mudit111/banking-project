@@ -2,5 +2,5 @@ package com.trip.presentation;
 
 public interface HotelInterface {
 
-	public void performOnMenu();
+	public void performOnMenu(int choice, String userType);
 }
