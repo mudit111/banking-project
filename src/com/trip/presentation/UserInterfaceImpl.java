@@ -36,18 +36,18 @@ public class UserInterfaceImpl implements UserInterface {
 	}
 
 	@Override
-	public void performOnAdminMenu(int choice) {
+	public void performOnAdminMenu(int choice, User user) {
 		switch (choice) {
 		case 1:
 		case 2:
 		case 3:
 			FlightInterface flightInterface = new FlightInterfaceImpl();
-			flightInterface.performOnMenu(choice, "admin");
+			flightInterface.performOnMenu(choice, user);
 			break;
 		case 4:
 		case 5:
 			HotelInterface hotelInterface = new HotelInterfaceImpl();
-			hotelInterface.performOnMenu(choice - 3, "admin");
+			hotelInterface.performOnMenu(choice - 3, user);
 			break;
 		case 6:
 			System.out.println("Good Bye !!");
@@ -59,21 +59,43 @@ public class UserInterfaceImpl implements UserInterface {
 	}
 
 	@Override
-	public void performOnUserMenu(int choice) {
+	public void performOnUserMenu(int choice, User user) {
 		switch (choice) {
 		case 1:
 			FlightInterface flightInterface = new FlightInterfaceImpl();
-			flightInterface.performOnMenu(choice, "user");
+			flightInterface.performOnMenu(choice, user);
 			break;
 		case 2:
 			HotelInterface hotelInterface = new HotelInterfaceImpl();
-			hotelInterface.performOnMenu(choice, "user");
+			hotelInterface.performOnMenu(choice, user);
 			break;
 		case 3:
 			break;
 		case 4:
 			break;
 		case 5:
+			boolean userChoice = true;
+			while (userChoice) {
+				System.out.println("1. View Itenary of Flight");
+				System.out.println("2. View Itenary of Hotel");
+				System.out.println("3. Go back");
+				Scanner scanner = new Scanner(System.in);
+				switch (scanner.nextInt()) {
+				case 1:
+					FlightBookingInterface flightBookingInterface = new FlightBookingInterfaceImpl();
+					flightBookingInterface.performOnFlightBookingMenu(user);
+					break;
+				case 2:
+					HotelBookingInterface hotelBookingInterface = new HotelBookingInterfaceImpl();
+					hotelBookingInterface.performOnHotelBookingMenu(user);
+					break;
+				case 3:
+					userChoice = false;
+					break;
+				default:
+					System.out.println("Please try again with a valid input");
+				}
+			}
 			break;
 		case 6:
 			System.out.println("Good bye!!");
@@ -123,11 +145,11 @@ public class UserInterfaceImpl implements UserInterface {
 					if (user.getUserType().trim().equals("admin")) {
 						showAdminMenu();
 						int userChoice = sc.nextInt();
-						performOnAdminMenu(userChoice);
+						performOnAdminMenu(userChoice, user);
 					} else {
 						showUserMenu();
 						int userChoice = sc.nextInt();
-						performOnUserMenu(userChoice);
+						performOnUserMenu(userChoice, user);
 					}
 				}
 			} catch (ClassNotFoundException classNotFoundException) {

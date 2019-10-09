@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.trip.entity.Hotel;
+import com.trip.entity.User;
 import com.trip.persistance.HotelDao;
 import com.trip.persistance.HotelDaoImpl;
 
@@ -38,7 +39,7 @@ public class HotelBlImpl implements HotelBl {
 	}
 
 	@Override
-	public boolean updateHotelRooms(Hotel hotel) throws ClassNotFoundException, SQLException {
-		return hotelDao.updateRecordForRoom(hotel);
+	public boolean updateHotelRooms(Hotel hotel, User user) throws ClassNotFoundException, SQLException {
+		return hotelDao.updateRecordForRoom(hotel,user);
 	}
 }

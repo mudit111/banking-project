@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.trip.entity.Hotel;
+import com.trip.entity.User;
 import com.trip.service.HotelBl;
 import com.trip.service.HotelBlImpl;
 import com.trip.util.FlightHelper;
@@ -21,8 +22,8 @@ public class HotelInterfaceImpl implements HotelInterface {
 	}
 
 	@Override
-	public void performOnMenu(int choice, String userType) {
-		if (userType == "admin") {
+	public void performOnMenu(int choice, User user) {
+		if (user.getUserType().trim().equals("admin")) {
 			Scanner scanner = new Scanner(System.in);
 			Hotel hotel = new Hotel();
 			switch (choice) {
@@ -50,7 +51,7 @@ public class HotelInterfaceImpl implements HotelInterface {
 			default:
 				System.out.println("Please try again with a valid input !!");
 			}
-		} else if (userType == "user") {
+		} else if (user.getUserType().trim().contentEquals("user")) {
 			Scanner scanner = new Scanner(System.in);
 			switch (choice) {
 			case 2:
@@ -68,7 +69,7 @@ public class HotelInterfaceImpl implements HotelInterface {
 						String hotelId = scanner.next();
 						for (Hotel hotel : hotelList) {
 							if (hotelId.toUpperCase().equals(hotel.getHotelId().trim().toUpperCase())) {
-								if (hotelBl.updateHotelRooms(hotel)) {
+								if (hotelBl.updateHotelRooms(hotel,user)) {
 									System.out.println("The hotel is booked successfully");
 								} else {
 									System.out.println("Sorry No rooms Left !!");

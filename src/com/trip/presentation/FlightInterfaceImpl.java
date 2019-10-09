@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.trip.entity.Flight;
+import com.trip.entity.User;
 import com.trip.service.FlightBl;
 import com.trip.service.FlightBlImpl;
 import com.trip.util.FlightHelper;
@@ -20,11 +21,11 @@ public class FlightInterfaceImpl implements FlightInterface {
 	}
 
 	@Override
-	public void performOnMenu(int choice, String userType) {
+	public void performOnMenu(int choice, User user) {
 		Scanner scanner = new Scanner(System.in);
 		Flight flight = new Flight();
 		String flightId = null;
-		if (userType == "admin") {
+		if (user.getUserType().trim().equals("admin")) {
 			switch (choice) {
 			case 1:
 				try {
@@ -65,7 +66,7 @@ public class FlightInterfaceImpl implements FlightInterface {
 			default:
 				System.out.println("Please try again with a valid input !!");
 			}
-		} else if (userType == "user") {
+		} else if (user.getUserType().trim().equals("user")) {
 			switch (choice) {
 			case 1:
 				System.out.println("Enter origin");
@@ -83,7 +84,7 @@ public class FlightInterfaceImpl implements FlightInterface {
 						flightId = scanner.next();
 						for (Flight iterator : flightList) {
 							if (flightId.toUpperCase().equals(iterator.getFlightId().trim().toUpperCase())) {
-								if (flightBl.updateSeats(iterator)) {
+								if (flightBl.updateSeats(iterator, user)) {
 									System.out.println("The flight is booked successfully");
 								} else {
 									System.out.println("Sorry No seats Left");

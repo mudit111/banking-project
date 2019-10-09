@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.trip.entity.Flight;
+import com.trip.entity.User;
 
 public interface FlightDao {
 
@@ -18,5 +19,5 @@ public interface FlightDao {
 
 	List<Flight> getRecords() throws SQLException, ClassNotFoundException;
 	
-	boolean updateRecordForSeat(Flight flight) throws ClassNotFoundException, SQLException;
+	boolean updateRecordForSeat(Flight flight, User user) throws ClassNotFoundException, SQLException;
 }

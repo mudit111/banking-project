@@ -1,5 +1,7 @@
 package com.trip.presentation;
 
+import com.trip.entity.User;
+
 public interface UserInterface {
 
 	public void showMainMenu();
@@ -10,7 +12,7 @@ public interface UserInterface {
 	
 	public void showUserMenu();
 
-	public void performOnAdminMenu(int choice);
+	public void performOnAdminMenu(int choice, User user);
 	
-	public void performOnUserMenu(int choice);
+	public void performOnUserMenu(int choice, User user);
 }

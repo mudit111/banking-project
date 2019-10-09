@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.trip.entity.Flight;
+import com.trip.entity.User;
 
 public interface FlightBl {
 
@@ -19,5 +20,5 @@ public interface FlightBl {
 
 	List<Flight> getAllFlights() throws ClassNotFoundException, SQLException;
 
-	boolean updateSeats(Flight flight) throws ClassNotFoundException, SQLException;
+	boolean updateSeats(Flight flight, User user) throws ClassNotFoundException, SQLException;
 }

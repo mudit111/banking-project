@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.trip.entity.Flight;
+import com.trip.entity.User;
 import com.trip.util.DbConnection;
+import java.util.Random;
 
 public class FlightDaoImpl implements FlightDao {
 
@@ -119,7 +121,7 @@ public class FlightDaoImpl implements FlightDao {
 	}
 
 	@Override
-	public boolean updateRecordForSeat(Flight flight) throws ClassNotFoundException, SQLException {
+	public boolean updateRecordForSeat(Flight flight, User user) throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		connection = DbConnection.getDatabaseConnection();
@@ -131,7 +133,15 @@ public class FlightDaoImpl implements FlightDao {
 			connection.close();
 			return false;
 		} else {
+			Random random = new Random();
+			preparedStatement = connection.prepareStatement("insert into FlightBooking values (?,?,?)");
+			preparedStatement.setString(1, user.getUserId());
+			preparedStatement.setString(2, flight.getFlightId());
+			preparedStatement.setString(3, String.valueOf(random.nextInt(10000)));
+			int status = preparedStatement.executeUpdate();
 			connection.close();
+			if (status == 0)
+				return false;
 			return true;
 		}
 	}

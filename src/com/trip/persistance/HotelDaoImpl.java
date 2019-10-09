@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.trip.entity.Hotel;
+import com.trip.entity.User;
 import com.trip.util.DbConnection;
 
 public class HotelDaoImpl implements HotelDao {
@@ -73,14 +75,13 @@ public class HotelDaoImpl implements HotelDao {
 	}
 
 	@Override
-	public List<Hotel> getRecords() throws ClassNotFoundException, SQLException{
+	public List<Hotel> getRecords() throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		connection = DbConnection.getDatabaseConnection();
 		List<Hotel> hotelList = null;
-		preparedStatement = connection
-				.prepareStatement("select * from Hotel");
+		preparedStatement = connection.prepareStatement("select * from Hotel");
 		resultSet = preparedStatement.executeQuery();
 		hotelList = new ArrayList<>();
 		while (resultSet.next()) {
@@ -98,7 +99,7 @@ public class HotelDaoImpl implements HotelDao {
 	}
 
 	@Override
-	public boolean updateRecordForRoom(Hotel hotel) throws ClassNotFoundException, SQLException {
+	public boolean updateRecordForRoom(Hotel hotel, User user) throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		connection = DbConnection.getDatabaseConnection();
@@ -110,7 +111,15 @@ public class HotelDaoImpl implements HotelDao {
 			connection.close();
 			return false;
 		} else {
+			Random random = new Random();
+			preparedStatement = connection.prepareStatement("insert into HotelBooking values (?,?,?)");
+			preparedStatement.setString(1, user.getUserId());
+			preparedStatement.setString(2, hotel.getHotelId());
+			preparedStatement.setString(3, String.valueOf(random.nextInt(10000)));
+			int status = preparedStatement.executeUpdate();
 			connection.close();
+			if (status == 0)
+				return false;
 			return true;
 		}
 	}

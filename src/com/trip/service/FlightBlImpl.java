@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.trip.entity.Flight;
+import com.trip.entity.User;
 import com.trip.persistance.FlightDao;
 import com.trip.persistance.FlightDaoImpl;
 
@@ -43,7 +44,7 @@ public class FlightBlImpl implements FlightBl {
 	}
 
 	@Override
-	public boolean updateSeats(Flight flight) throws ClassNotFoundException, SQLException {
-		return flightDao.updateRecordForSeat(flight);
+	public boolean updateSeats(Flight flight, User user) throws ClassNotFoundException, SQLException {
+		return flightDao.updateRecordForSeat(flight,user);
 	}
 }

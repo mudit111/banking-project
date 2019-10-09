@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.trip.entity.Hotel;
+import com.trip.entity.User;
 
 public interface HotelBl {
 
@@ -16,5 +17,5 @@ public interface HotelBl {
 
 	List<Hotel> getAllHotels() throws ClassNotFoundException, SQLException;
 
-	boolean updateHotelRooms(Hotel hotel) throws ClassNotFoundException, SQLException;
+	boolean updateHotelRooms(Hotel hotel,User user) throws ClassNotFoundException, SQLException;
 }
